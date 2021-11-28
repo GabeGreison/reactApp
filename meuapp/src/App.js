@@ -1,57 +1,49 @@
-import React from 'react'
+import React from "react";
 
-const luana = {
-  cliente: 'Luana',
-  idade: 27,
-  compras: [
-    { nome: 'Notebook', preco: 'R$ 2500' },
-    { nome: 'Geladeira', preco: 'R$ 3000' },
-    { nome: 'Smartphone', preco: 'R$ 1500' },
-  ],
-  ativa: true,
-};
-
-const mario = {
-  cliente: 'Mario',
-  idade: 31,
-  compras: [
-    { nome: 'Notebook', preco: 'R$ 2500' },
-    { nome: 'Geladeira', preco: 'R$ 3000' },
-    { nome: 'Smartphone', preco: 'R$ 1500' },
-    { nome: 'Guitarra', preco: 'R$ 3500' },
-  ],
-  ativa: false,
-};
 
 const App = () => {
-  
-  const corAtivo = {
-    color:'green'
-  }
-  const corInativo ={
-    color:'red'
-  }
 
-  const dados = luana;
+  const produtos = [
+    {
+      id: 1,
+      nome: 'Smartphone',
+      preco: 'R$ 2000',
+      cores: ['#29d8d5', '#252a34', '#fc3766'],
+    },
+    {
+      id: 2,
+      nome: 'Notebook',
+      preco: 'R$ 3000',
+      cores: ['#ffd045', '#d4394b', '#f37c59'],
+    },
+    {
+      id: 3,
+      nome: 'Tablet',
+      preco: 'R$ 1500',
+      cores: ['#365069', '#47c1c8', '#f95786'],
+    },
+  ];
 
-  let total =0;
-  let valor =0;
+  const precos = produtos.filter(({preco}) => Number(preco.replace('R$ ', '')) > 1500 )
 
-  dados.compras.forEach((compra) => {
-  valor = compra.preco.substring(3, compra.preco.length);
-  total += Number(valor)
-});
+  return (<section>
+    {precos.map(({nome , preco , id , cores}) => <div key={id}>
+      <h1> {nome}</h1>
 
+      <p> {preco}</p>
 
-  return (<div>
-    <p>Nome: {dados.cliente}</p>
-    <p>Idade {dados.idade}</p>
-    <span>Situação: </span>
-    <span style = {dados.ativa ? corAtivo : corInativo} > {dados.ativa ? 'Ativa'  : 'Inativa'}</span>
-    <p>Total gasto: R$ {total}</p>
-    {total > 10000 ? <p> Você está gastando demais!!</p> : ''}
-  </div>);
+      <div style = {{backgroundColor : cores[0], 
+        color: "whitesmoke"}}>{cores[0]}</div>
 
+      <div style = {{backgroundColor : cores[1], 
+        color: "whitesmoke"}}>{cores[1]}</div>
+
+      <div style = {{backgroundColor : cores[2], 
+        color: "whitesmoke"}}>{cores[2]}</div>
+    </div>)}
+  </section>);
 };
+
+
 
 export default App;
