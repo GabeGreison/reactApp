@@ -1,26 +1,21 @@
 import React from "react";
+import ButtonModal from "./ButtonModal";
+import Modal from "./Modal.js";
 
 
 
 const App = () => {
+  const [modal, setModal] = React.useState(false)
 
-  const [ativo ,setAtivo] = React.useState(false)
-  const [dados, setDados] = React.useState({nome: 'Gabriel' , idade:"27"})
 
-  function handleClick(){
-    setAtivo(!ativo);
-    setDados({ ...dados, faculdade: 'Não possui faculdade'})
-  }
-  return (<>
-  <p>NOME: {dados.nome}</p>
-  <p>IDADE: {dados.idade}</p>
-  <p>Faculdade: {dados.faculdade}</p>
-  <button 
-    onClick = {handleClick}> 
-    {ativo ? 'ativo' : 'intativo'} 
-  </button>
-  </>
+  return(
+    <div>
+      <Modal modal ={modal} setModal ={setModal} />
+      <ButtonModal setModal={setModal} />
+      
+    </div>
   )
+ 
 };
 
 export default App;
