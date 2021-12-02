@@ -1,24 +1,26 @@
 import React from "react";
-import Produtos from "./Produtos";
-import Home from "./Home"
-import Header from "./Header";
+
 
 
 const App = () => {
 
-   
-  const {pathname} = window.location;
-  let Page;
-  if(pathname === '/Produtos'){
-    Page = Produtos
-  } else {
-    Page = Home  
-  }
+  const [ativo ,setAtivo] = React.useState(false)
+  const [dados, setDados] = React.useState({nome: 'Gabriel' , idade:"27"})
 
-  return <>
-  <Header />
-    <Page />
+  function handleClick(){
+    setAtivo(!ativo);
+    setDados({ ...dados, faculdade: 'Não possui faculdade'})
+  }
+  return (<>
+  <p>NOME: {dados.nome}</p>
+  <p>IDADE: {dados.idade}</p>
+  <p>Faculdade: {dados.faculdade}</p>
+  <button 
+    onClick = {handleClick}> 
+    {ativo ? 'ativo' : 'intativo'} 
+  </button>
   </>
+  )
 };
 
 export default App;
