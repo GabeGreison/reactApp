@@ -1,21 +1,22 @@
 import React from "react";
-import ButtonModal from "./ButtonModal";
-import Modal from "./Modal.js";
 
 
 
 const App = () => {
-  const [modal, setModal] = React.useState(false)
+  
+const [contador , setContador] = React.useState(0)
 
+function handleClick(){
+  setContador((contador)=> {
+    return contador + 1
+  })
+}
 
   return(
-    <div>
-      <Modal modal ={modal} setModal ={setModal} />
-      <ButtonModal setModal={setModal} />
-      
-    </div>
-  )
- 
-};
+    <>
+    <h1>Contador:</h1>
+    <button onClick = {handleClick}>{contador}</button>
+    </>
+  )};
 
 export default App;
