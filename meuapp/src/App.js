@@ -1,25 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 const App = () => {
-  const [carrinho,setCarrinho] = React.useState(0);
-  const [notificacao, setNotificacao] = React.useState(null)
-  const timeoutRef = React.useRef()
+  const [contar, setContar] = React.useState(0)
 
-  function handleClick(){
-    setCarrinho (carrinho + 1)
-    setNotificacao('Item adicionado ao carrinho')
-    clearTimeout(timeoutRef.current )
-    timeoutRef.current = setTimeout (() => {
-      setNotificacao(null)
-    }, 2000)
-  }
+  const handleClick = React.useCallback(() => {
+    setContar((contar) => contar + 1)
+  }, [] );
 
-  return (
-    <div> 
-      <p>{notificacao}</p>
-      <button onClick={handleClick}> Adicionar ao carrinho : {carrinho}</button>
-    </div>
-  );
+  return <button onClick={handleClick}>{contar}</button>
 };
 
 export default App;
