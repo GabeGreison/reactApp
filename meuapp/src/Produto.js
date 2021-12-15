@@ -4,6 +4,7 @@ import { GlobalContext } from "./GlobalContext";
 const Produto = () => {
   const global = React.useContext(GlobalContext);
   if (global.dados === null) return null;
+  console.log(global.dados);
   return (
     <div>
       {" "}
