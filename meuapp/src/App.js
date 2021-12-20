@@ -1,21 +1,26 @@
 import React from "react";
 
 const App = () => {
-  const [texto, setTexto] = React.useState("");
+  const [select, setSelect] = React.useState("");
 
   function handleChange({ target }) {
-    setTexto(target.value);
+    setSelect(target.value);
   }
 
   return (
     <form>
-      <textarea
-        name="texto"
-        id="texto"
-        rows="5"
-        value={texto}
-        onChange={handleChange}
-      />
+      <select name="" id="bairros" value={select} onChange={handleChange}>
+        <option value="" disabled>
+          Selecione
+        </option>
+        <option value="vila peri"> Vila Peri</option>
+        <option value="bonsucesso"> Bonsucesso</option>
+        <option value="benfica"> Benfica</option>
+        <option value="araxa">Parque araxa</option>
+        <option value="maraponga">Maraponga</option>
+      </select>
+
+      <p>{select}</p>
       <button>enviar</button>
     </form>
   );
