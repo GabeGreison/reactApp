@@ -1,31 +1,35 @@
 import React from "react";
 
+const coresArray = ["azul", "roxo", "laranja", "verde", "vermelho", "cinza"];
+
 const App = () => {
-  const [escolha, setEscolha] = React.useState("");
+  const [cores, setCores] = React.useState(["azul"]);
+
+  function handleChange({ target }) {
+    if (target.checked) {
+      setCores([...cores, target.value]);
+    } else {
+      setCores(cores.filter((cor) => cor !== target.value));
+    }
+  }
+
+  function checkColor(cor) {
+    return cores.includes(cor);
+  }
 
   return (
     <form>
-      <label>
-        <input
-          type="radio"
-          name="escolha"
-          value="produto"
-          onChange={({ target }) => setEscolha(target.value)}
-        />
-        Produto
-      </label>
-      <label>
-        <input
-          type="radio"
-          name="escolha"
-          value="cor"
-          onChange={({ target }) => setEscolha(target.value)}
-        />
-        Cor
-      </label>
-      <p>{escolha}</p>
-
-      <button>enviar</button>
+      {coresArray.map((cor) => (
+        <label key={cor} style={{ textTransform: "capitalize" }}>
+          <input
+            type="checkbox"
+            value={cor}
+            checked={checkColor(cor)}
+            onChange={handleChange}
+          />
+          {cor}
+        </label>
+      ))}
     </form>
   );
 };
