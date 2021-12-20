@@ -1,26 +1,30 @@
 import React from "react";
 
 const App = () => {
-  const [select, setSelect] = React.useState("");
-
-  function handleChange({ target }) {
-    setSelect(target.value);
-  }
+  const [escolha, setEscolha] = React.useState("");
 
   return (
     <form>
-      <select name="" id="bairros" value={select} onChange={handleChange}>
-        <option value="" disabled>
-          Selecione
-        </option>
-        <option value="vila peri"> Vila Peri</option>
-        <option value="bonsucesso"> Bonsucesso</option>
-        <option value="benfica"> Benfica</option>
-        <option value="araxa">Parque araxa</option>
-        <option value="maraponga">Maraponga</option>
-      </select>
+      <label>
+        <input
+          type="radio"
+          name="escolha"
+          value="produto"
+          onChange={({ target }) => setEscolha(target.value)}
+        />
+        Produto
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="escolha"
+          value="cor"
+          onChange={({ target }) => setEscolha(target.value)}
+        />
+        Cor
+      </label>
+      <p>{escolha}</p>
 
-      <p>{select}</p>
       <button>enviar</button>
     </form>
   );
