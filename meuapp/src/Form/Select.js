@@ -20,3 +20,5 @@ export const Select = ({ options, value, setValue, ...props }) => {
     </div>
   );
 };
+
+export default Select;
