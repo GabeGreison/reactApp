@@ -19,7 +19,6 @@ const App = () => {
             <Route path="contato" element={<Contato />} />
           </Routes>
         </div>
-
         <Footer />
       </BrowserRouter>
     </div>
